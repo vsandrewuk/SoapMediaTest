@@ -1,82 +1,67 @@
-<p align="center">
-    <a href="https://sylius.com" target="_blank">
-        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
-    </a>
-</p>
+Installation Instructions:
+    - Pull from this Repositories Master Branch to a new project folder
+    - Create a new database called "soapmedia_sylius" and import the soapmedia_sylius.sql file contained in the root directory
+    - Create a database user for the database and add the details in to the .env.local file located in the root directory
+    - Start server using "symfony server:start"
+    - Flush caches using "php bin/console c:c"
+    - Test the site is working (If it is not working please give me a call or send an email)
 
-<h1 align="center">Sylius Standard Edition</h1>
+Thurday: 00:30AM -> 1:30AM 
+	- Installed XAMPP
+	- Changed php.ini files
+	- Created database and database user (specific to that database rather than a global user)
+	- Created .env.local file to override database credentials
+	- Installed Sylius with GBP Currency, en_GB locale and dummy data
+	- Tested to make sure demo site is working
 
-<p align="center">This is Sylius Standard Edition repository for starting new projects.</p>
+Saturday: 02:00 -> 5:00AM
+	- Setup Git Repository
+	- Added Git Issues
+	- Initial Commit
+	- Investigated Sylius Extending and Overwriting of vender files
+	- Investigated translation files and twig forms
+	- Tested Overwriting Bundles and Translation files
+	- Tested changing Translation files
 
-About
------
+Saturday: Around 5 hours across the day between 12:00 -> 20:00
+	- Overridden the CustomerProfileType form within the AdminApiBundle
+	- Installed symfony/maker-bundle with composer for updating entities
+	- Copied the _form.html.twig file in to the templates folder and tested its been extended
+		- Removed the form.gender form field and can visibly see it updated in the admin panel
+	- Removed the gender form field in the CustomerProfileTypeExtension.php and can see from the errors that its functions no longer           exist
+	- Registered the form extension within services.yaml
+	- Attempted to create a new form element called "vip"
+		- Currently throwing an error saying the property does not exist along with its required methods i.e getvip(), setvip()
+	- Extended the messages.en.yml file to give new form components descriptions for the current locale
 
-Sylius is the first decoupled eCommerce platform based on [**Symfony**](http://symfony.com) and [**Doctrine**](http://doctrine-project.org). 
-The highest quality of code, strong testing culture, built-in Agile (BDD) workflow and exceptional flexibility make it the best solution for application tailored to your business requirements. 
-Enjoy being an eCommerce Developer again!
+Sunday: 01:00 -> 03:30
+	- Extended the Entity called Customer.php for the new "vip" element
+		- Added the "vip" column to the "sylius_customer" table in the database using Doctrine ORM
+			- This was generated using "php bin/console doctrine:schema:update --force" (do not use --force typically, testing purposes only)
+	- Generated the Customer Repository folder using "php bin/console make:entity --regenerate" then pressing enter
+	- Found out you can add 'message' to your form components for success/error messages
+	- Proved that adding the "vip" attribute to the CustomerProfileType.php vender file adds it to the admin form
 
-Powerful REST API allows for easy integrations and creating unique customer experience on any device.
+Sunday: 12:00 -> 16:30
+	- Changed the CustomerProfileTypeExtension to point to the CustomerBundle instead of the AdminApiBundle
+		- Can now visibly see on the frontend the "app.form.customer.vip" Checkbox
+		- Can visibly see within the translations tab at the bottom of Sylius there is a missing translation
+	- Tested that adding the form_row(form.vip) field to the profileUpdate.html.twig file it adds the field to the customer's Personal Information section
+		Note: Removed the field, I only tested this because of the later tasks such as adding "Favourite Quote" to both the Admin Panel               and Customer Info section
+	- Tested changing the Is VIP Checkbox to see if it updates in the sylius_customer database table (successful)
 
-We're using full-stack Behavior-Driven-Development, with [phpspec](http://phpspec.net) and [Behat](http://behat.org)
+Knowledge I gained from this task:
+	- Adding database columns using Doctrine ORM
+	- Symfony Forms
+	- How to install Sylius
+	- How to extend Translation Files
+	- How to extend Bundles
+	- How to write and generate Entities
+	- How to remove/add form elements
+	- How to extend Twig Template Files
 
-Documentation
--------------
+Notes:
+	- Typically I would Version Control just the src folder, but for ease of installation I have VC'ed the entire root directory
 
-Documentation is available at [docs.sylius.com](http://docs.sylius.com).
-
-Installation
-------------
-
-```bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar create-project sylius/sylius-standard project
-$ cd project
-$ yarn install
-$ yarn build
-$ php bin/console sylius:install
-$ php bin/console server:start
-$ open http://localhost:8000/
-```
-
-Troubleshooting
----------------
-
-If something goes wrong, errors & exceptions are logged at the application level:
-
-```bash
-$ tail -f var/log/prod.log
-$ tail -f var/log/dev.log
-```
-
-If you are using the supplied Vagrant development environment, please see the related [Troubleshooting guide](etc/vagrant/README.md#Troubleshooting) for more information.
-
-Contributing
-------------
-
-Would like to help us and build the most developer-friendly eCommerce platform? Start from reading our [Contribution Guide](https://docs.sylius.com/en/latest/contributing/)!
-
-Stay Updated
-------------
-
-If you want to keep up with the updates, [follow the official Sylius account on Twitter](http://twitter.com/Sylius) and [like us on Facebook](https://www.facebook.com/SyliusEcommerce/).
-
-Bug Tracking
-------------
-
-If you want to report a bug or suggest an idea, please use [GitHub issues](https://github.com/Sylius/Sylius/issues).
-
-Community Support
------------------
-
-Have a question? Join our [Slack](https://slackinvite.me/to/sylius-devs) or post it on [StackOverflow](http://stackoverflow.com) tagged with "sylius". You can also join our [group on Facebook](https://www.facebook.com/groups/sylius/)!
-
-MIT License
------------
-
-Sylius is completely free and released under the [MIT License](https://github.com/Sylius/Sylius/blob/master/LICENSE).
-
-Authors
--------
-
-Sylius was originally created by [Paweł Jędrzejewski](http://pjedrzejewski.com).
-See the list of [contributors from our awesome community](https://github.com/Sylius/Sylius/contributors).
+Total Time Invested: 16 Hours
+ 
