@@ -14,11 +14,12 @@ final class CustomerProfileTypeExtension extends AbstractTypeExtension
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        //TODO: Change the label to 'app.form.customer.vip' and add a translation for it
         // This adds the "vip" Checkbox in to the form
         $builder
             ->add('vip', CheckboxType::class, [
                 'required' => false,
-                'label' => 'app.form.customer.vip',
+                'label' => 'Is VIP',
             ])
         ;
     }
