@@ -37,4 +37,4 @@ services:
     app.form.extension.type.customer_profile:
         class: App\Form\Extension\CustomerProfileTypeExtension
         tags:
-            - { name: form.type_extension, extended_type: Sylius\Bundle\AdminApiBundle\Form\Type\CustomerProfileType }
+            - { name: form.type_extension, extended_type: Sylius\Bundle\CustomerBundle\Form\Type\CustomerProfileType }

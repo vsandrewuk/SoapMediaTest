@@ -3,7 +3,7 @@
     <div class="column">
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'sylius.ui.customer_details'|trans }}</h4>
-            <div class="three fields">
+            <div class="two fields">
                 {{ form_row(form.firstName) }}
                 {{ form_row(form.lastName) }}
             </div>
@@ -15,7 +15,10 @@
             {{ form_row(form.gender) }}
             {{ form_row(form.birthday) }}
             {{ form_row(form.phoneNumber) }}
-            {{ form_row(form.subscribedToNewsletter) }}
+            <div class="two fields">
+                {{ form_row(form.subscribedToNewsletter) }}
+                {{ form_row(form.vip) }}
+            </div>
         </div>
     </div>
     <div class="column">

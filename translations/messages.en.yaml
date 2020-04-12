@@ -1,0 +1,10 @@
+# sylius_customer:
+# 	resources:
+# 		address:
+# 			classes:
+# 				form:
+# 					vip: 'Is VIP'
+# app:
+# 	form:
+# 		customer:
+# 			vip: 'test'
